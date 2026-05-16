@@ -1,6 +1,7 @@
 Nmap is a popular scanning utility that is available for download from the Internet at no cost. It is a powerful tool that includes many functions. The Nmap utility can quickly and easily gather information about a network's hosts, including their availability, their IP addresses, and their names. This is useful information not only for a network administrator but for a hacker as well, prior to an attack. One of the first tasks a hacker will carry out is to perform a scan of the network for hosts that are running. Once the user knows what hosts are accessible, the user will then find a means to gather as much information about the hosts as possible.
 
-1. nmap -sn 
+1. nmap -sn
+   
 ![](../images/Pasted%20image%2020251126174014.png)
 
 **`-sn` is a host discovery (ping) scan**. It tells Nmap to **only check which machines are online** without scanning any ports. It works like a normal ping, but is more advanced because Nmap can use ARP requests, ICMP pings, or even TCP probes to detect if a device is up, even when regular ping is blocked.
@@ -23,7 +24,8 @@ On a **WAN**, ARP cannot be used, so Nmap switches to **ICMP, SYN, or ACK pings*
 
 After Nmap figures out that an IP is **up**, by default it also tries to **resolve the IP to a hostname** using reverse DNS lookups. That's why in Wireshark you see **DNS queries** even though you only ran `nmap -sn` – Nmap is asking the DNS server: "Which hostname belongs to this IP?". This is just for nicer output and doesn't affect the actual host discovery. If we don't want this DNS stuff, we can add `-n` (no DNS resolution), e.g. `nmap -sn -n <target>`.
 
-2. nmap -sT 
+2. nmap -sT
+   
 ![](../images/Pasted%20image%2020251126180459.png)
 
 This Nmap `-sT` scan shows all the open TCP ports on the target machine by performing a full TCP handshake, revealing the services running on each port (like FTP, SSH, Telnet, HTTP, MySQL, etc.).
@@ -66,7 +68,8 @@ UDP services:
     
 - **161** SNMP
 
-4. nmap -sS 
+4. nmap -sS
+   
 ![](../images/Pasted%20image%2020251204140652.png)
 
 ![](../images/Pasted%20image%2020251126181736.png)
