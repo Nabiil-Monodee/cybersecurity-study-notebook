@@ -68,29 +68,29 @@ So, **ARP poisoning** gets you in the middle of the traffic on the LAN, and **DN
 Attack Lab
 
 1. Type ettercap -G to start Ettercap GUI
-![](../images/Pasted image 20251127134055.png)
+![](../images/Pasted%20image%2020251127134055.png)
 2. click the Tick icon and then click on three dot in the right hand of the menu :Choose Hosts - Scan for Hosts.
 This will start an ARP scan to detect what machines are up on the subnetwork. It will add those machines to a host list.
 This will start an ARP scan to detect what machines are up on the subnetwork. It will add those machines to a host list.
-![](../images/Pasted image 20251127134453.png)
+![](../images/Pasted%20image%2020251127134453.png)
 3. Choose Hosts - Host List
 In the Host List you will find every devices on the network that ettercap scanned. 
-![](../images/Pasted image 20251127134535.png)
+![](../images/Pasted%20image%2020251127134535.png)
 4. Select to target machine ip address and click Add to Traget 1 to select the target.
-![](../images/Pasted image 20251127134723.png)
+![](../images/Pasted%20image%2020251127134723.png)
 5. After added the target Ip address to the target list click in the menu bar and select Targets Menu option and then select Current Targets
-![](../images/Pasted image 20251127134932.png)
+![](../images/Pasted%20image%2020251127134932.png)
 6.  Now go to the MITM menu option and select Arp poisoning and choose the remote sniffing option, click ok.
-![](../images/Pasted image 20251127135021.png) 
+![](../images/Pasted%20image%2020251127135021.png)
 7. The ARP poison attack is happening underneath. You now have access to all the traffic which is being routed to the IP address which you have entered earlier
-![](../images/Pasted image 20251127135123.png)
+![](../images/Pasted%20image%2020251127135123.png)
 8.  Login from the target machine and try to connect to a server  and sees what does ettercap catures
-![](../images/Pasted image 20251127140031.png)
+![](../images/Pasted%20image%2020251127140031.png)
 Those are credential i have typed 
-![](../images/Pasted image 20251127140051.png) 
+![](../images/Pasted%20image%2020251127140051.png)
 9. go onto profile and sees 
-![](../images/Pasted image 20251127142028.png)
+![](../images/Pasted%20image%2020251127142028.png)
 Ettercap successfully intercepted the FTP session between Metasploitable and Telehack, automatically extracted the login credentials, and saved them in this profile view—showing how easy it is to steal usernames and passwords from unencrypted protocols when you’re in the middle of the network.
-![](../images/Pasted image 20251208210256.png)
+![](../images/Pasted%20image%2020251208210256.png)
 
 **In this lab you used ARP poisoning so that your Kali machine could silently sit in the middle of the traffic between Metasploitable (the victim) and the gateway/Internet: Ettercap sent fake ARP replies to both sides, making the victim think “the gateway’s IP is at Kali’s MAC” and the gateway think “the victim’s IP is at Kali’s MAC,” so all packets between them were routed through Kali. When the victim then ran `ftp telehack.com` and logged in with `cst353520 / cst3530`, that FTP traffic (which is unencrypted) flowed victim --> Kali -->gateway -->Telehack and back, and Ettercap-already in MITM position because of the ARP spoofin-could see and parse those packets, recognize the FTP session, and extract and display the username and password in the Profile Details window.**
